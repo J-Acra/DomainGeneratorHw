@@ -7,6 +7,18 @@
     <title>Domain Generator</title>
   </head>
   <body>
+    <div class="alert bg-dark mt-4 mb-4">
+      <div class="d-inline-flex">
+        <button
+          id="genButton"
+          type="button"
+          class="fs-1 p-3 btn btn-secondary btn-lg"
+        >
+          Generate Domain Name
+        </button>
+        <p class="text-light p-4 fs-1">test</p>
+      </div>
+    </div>
     <div class="input-group mb-3">
       <button
         class="btn btn-outline-secondary dropdown-toggle"
@@ -20,9 +32,10 @@
         <li><a class="dropdown-item" href="#">Add-Pronoun</a></li>
         <li><a class="dropdown-item" href="#">Add-Adj</a></li>
         <li><a class="dropdown-item" href="#">Add-Noun</a></li>
-        <li><hr class="dropdown-divider" /></li>
-        <li><a class="dropdown-item" href="#">Separated link</a></li>
       </ul>
+
+      <ul id="domainList"></ul>
+
       <input
         type="text"
         class="form-control"

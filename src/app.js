@@ -4,7 +4,11 @@ import "bootstrap";
 import "./style.css";
 
 window.onload = function() {
-  let gendomain = [];
+  let buttonPlaceHolder = document.querySelector("#genButton");
+  buttonPlaceHolder.addEventListener("click", generateDomain);
+};
+function generateDomain() {
+  let genDomain = [];
   let pronoun = ["the", "our"];
   let adj = ["great", "big"];
   let noun = ["jogger", "racoon"];
@@ -14,10 +18,11 @@ window.onload = function() {
     for (var j = 0; j < adj.length; j++) {
       for (var k = 0; k < noun.length; k++) {
         for (var l = 0; l < topLevel.length; l++) {
-          gendomain.push(pronoun[i] + adj[j] + noun[k] + topLevel[l]);
+          genDomain.push(pronoun[i] + adj[j] + noun[k] + topLevel[l]);
         }
       }
     }
   }
-  console.log(gendomain);
-};
+  console.log(genDomain);
+}
+function displayDomain() {}
