@@ -29,7 +29,6 @@ function generateDomain() {
       }
     }
   }
-  console.log(genDomain);
 }
 function generateOrDisplay() {
   if (genDomain.length == 0) {
@@ -56,11 +55,14 @@ function deleteDomain(event) {
   genDomain = genDomain.filter((domain, index) => index != clickedAnchor);
   displayList();
 }
+
+function hideList() {
+  document.getElementById("domainList").innerHTML = emptyDomList;
+}
+
 function changeButtonText() {
   var listBtn = document.getElementById("showListButton");
-  function hideList() {
-    document.getElementById("domainList").innerHTML = emptyDomList;
-  }
+
   if (listBtn.value == "Show List") {
     listBtn.value = "Hide List";
     listBtn.innerHTML = "Hide List Of Domains";
@@ -70,6 +72,10 @@ function changeButtonText() {
     listBtn.innerHTML = "Show List Of Domains";
   }
 }
+
+// function checkDomListValue(){
+//   if
+// }
 
 // function addAdjAndDisplay() {
 //   function addAdj() {
