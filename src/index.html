@@ -8,7 +8,7 @@
   </head>
   <body>
     <div class="alert bg-dark mt-4 mb-4">
-      <div class="d-inline-flex">
+      <div class="d-flex justify-content-between">
         <button
           id="genButton"
           type="button"
@@ -16,7 +16,18 @@
         >
           Generate Domain Name
         </button>
-        <p class="text-light p-4 fs-1">test</p>
+        <p id="displayedDomain" class="text-light p-4 fs-1">
+          Your Domain Will Generate Here
+        </p>
+        <button
+          value="Show List"
+          onclick="changeButtonText()"
+          id="showListButton"
+          type="button"
+          class="fs-1 p-3 btn btn-secondary btn-lg"
+        >
+          Show List Of Domains
+        </button>
       </div>
     </div>
     <div class="input-group mb-3">
@@ -29,18 +40,27 @@
         Add-To-Array
       </button>
       <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Add-Pronoun</a></li>
-        <li><a class="dropdown-item" href="#">Add-Adj</a></li>
-        <li><a class="dropdown-item" href="#">Add-Noun</a></li>
+        <li>
+          <a id="addAdjButton" type="submit" class="dropdown-item" href="#"
+            >Add-Adj</a
+          >
+        </li>
+        <li>
+          <a id="addNounButton" class="dropdown-item" href="#">Add-Noun</a>
+        </li>
       </ul>
-
-      <ul id="domainList"></ul>
-
       <input
+        id="addInput"
         type="text"
         class="form-control"
         aria-label="Text input with dropdown button"
+        value="Input Item Here"
+        onfocus="this.value = this.value=='Input Item Here'?'':this.value;"
+        onblur="this.value = this.value==''?'Input Item Here':this.value;"
       />
+    </div>
+    <div class="d-flex justify-content-center">
+      <ul id="domainList" value="Empty" class="list-group list-group"></ul>
     </div>
   </body>
 </html>
