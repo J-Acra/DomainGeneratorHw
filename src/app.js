@@ -7,10 +7,14 @@ window.onload = function() {
   let buttonPlaceHolder1 = document.querySelector("#genButton");
   buttonPlaceHolder1.addEventListener("click", generateOrDisplay);
   let buttonPlaceHolder2 = document.querySelector("#showListButton");
-  buttonPlaceHolder2.addEventListener("click", displayList);
+  buttonPlaceHolder2.addEventListener("click", displayListButton);
   let buttonPlaceHolder3 = document.querySelector("#showListButton");
-  buttonPlaceHolder3.addEventListener("click", changeButtonText);
+  buttonPlaceHolder3.addEventListener("click", changeListButtonText);
+  let buttonPlaceHolder4 = document.querySelector("#genButton");
+  buttonPlaceHolder4.addEventListener("click", changeGenButtonText);
 };
+var listBtn = document.getElementById("showListButton");
+var genBtn = document.getElementById("genButton");
 let emptyDomList = [];
 let genDomain = [];
 let addedDomain = [];
@@ -29,6 +33,7 @@ function generateDomain() {
       }
     }
   }
+  console.log(genDomain);
 }
 function generateOrDisplay() {
   if (genDomain.length == 0) {
@@ -38,7 +43,11 @@ function generateOrDisplay() {
       genDomain[Math.floor(Math.random() * genDomain.length)];
   }
 }
-
+function displayListButton() {
+  if (genDomain.length == 0)
+    window.alert("List is empty! Please generate a list");
+  else displayList();
+}
 function displayList() {
   document.getElementById("domainList").innerHTML = genDomain
     .map(
@@ -54,22 +63,36 @@ function deleteDomain(event) {
   let clickedAnchor = event.target.id.substring(1);
   genDomain = genDomain.filter((domain, index) => index != clickedAnchor);
   displayList();
+  if (genDomain.length == 0 && listBtn.value == "Hide List") {
+    changeListButtonText();
+    changeGenButtonText();
+  }
 }
 
 function hideList() {
   document.getElementById("domainList").innerHTML = emptyDomList;
 }
 
-function changeButtonText() {
-  var listBtn = document.getElementById("showListButton");
-
-  if (listBtn.value == "Show List") {
+function changeListButtonText() {
+  if (listBtn.value == "Show List" && genDomain.length != 0) {
     listBtn.value = "Hide List";
     listBtn.innerHTML = "Hide List Of Domains";
   } else if (listBtn.value == "Hide List") {
     hideList();
     listBtn.value = "Show List";
     listBtn.innerHTML = "Show List Of Domains";
+  }
+}
+
+function changeGenButtonText() {
+  if (genBtn.value == "Generate List") {
+    genBtn.value = "Display Random Domain";
+    genBtn.innerHTML = "Display Random";
+  } else if (genBtn.value == "Display Random" && genDomain == 0) {
+    document.getElementById("displayedDomain").innerHTML =
+      "Your Domain Will Generate Here";
+    genBtn.value = "Generate List";
+    genBtn.innerHTML = "Generate Domain List";
   }
 }
 

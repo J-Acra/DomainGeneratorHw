@@ -10,18 +10,20 @@
     <div class="alert bg-dark mt-4 mb-4">
       <div class="d-flex justify-content-between">
         <button
+          onclick="changeGenButtonText()"
+          value="Generate List"
           id="genButton"
           type="button"
           class="fs-1 p-3 btn btn-secondary btn-lg"
         >
-          Generate Domain Name
+          Generate Domain List
         </button>
         <p id="displayedDomain" class="text-light p-4 fs-1">
           Your Domain Will Generate Here
         </p>
         <button
           value="Show List"
-          onclick="changeButtonText()"
+          onclick="changeListButtonText()"
           id="showListButton"
           type="button"
           class="fs-1 p-3 btn btn-secondary btn-lg"
@@ -31,29 +33,28 @@
       </div>
     </div>
     <div class="input-group mb-3">
+      <button type="button" class="btn btn-outline-secondary">
+        Input Selector
+      </button>
       <button
-        class="btn btn-outline-secondary dropdown-toggle"
         type="button"
+        class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
         data-bs-toggle="dropdown"
         aria-expanded="false"
       >
-        Add-To-Array
+        <span class="visually-hidden">Toggle Dropdown</span>
       </button>
       <ul class="dropdown-menu">
-        <li>
-          <a id="addAdjButton" type="submit" class="dropdown-item" href="#"
-            >Add-Adj</a
-          >
-        </li>
-        <li>
-          <a id="addNounButton" class="dropdown-item" href="#">Add-Noun</a>
-        </li>
+        <li><a class="dropdown-item" href="#">Add-Adjective</a></li>
+        <li><a class="dropdown-item" href="#">Add-Noun</a></li>
+        <li><a class="dropdown-item" href="#">Add-Adjective-And-Noun</a></li>
       </ul>
       <input
         id="addInput"
         type="text"
         class="form-control"
-        aria-label="Text input with dropdown button"
+        aria-label="Text input with segmented dropdown button"
+        ]
         value="Input Item Here"
         onfocus="this.value = this.value=='Input Item Here'?'':this.value;"
         onblur="this.value = this.value==''?'Input Item Here':this.value;"
